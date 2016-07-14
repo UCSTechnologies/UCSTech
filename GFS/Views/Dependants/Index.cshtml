@@ -6,8 +6,26 @@
 }
 
 <h2>Dependants</h2>
+<div align="right">
 
-<table class="table table-bordered table-responsive">
+    <p>
+        @using (Html.BeginForm("Index", "Dependants", System.Web.Mvc.FormMethod.Get))
+        {
+            <div>
+                <b>Search By:</b>
+                @Html.RadioButton("SearchBy", "idnumber", true)<text>ID Number</text>
+                @Html.RadioButton("SearchBy", "policyNo")<text>Policy Number</text>
+            </div>
+            @Html.RadioButton("SearchBy", "coveredby")<text>Policy Holder</text>
+            @Html.RadioButton("SearchBy", "fName")<text>First Name</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+        }
+    </p>
+
+</div>
+
+<table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.coveredby)
@@ -18,10 +36,10 @@
         <th>
             @Html.DisplayNameFor(model => model.lName)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.IdNo)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.dOb)
         </th>
         <th>
@@ -30,9 +48,9 @@
         <th>
             @Html.DisplayNameFor(model => model.relationship)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.amount)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.policyPlan)
         </th>
@@ -54,10 +72,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.lName)
             </td>
-            @*<td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IdNo)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.dOb)
             </td>
             <td>
@@ -66,9 +84,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.relationship)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.amount)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.policyPlan)
             </td>

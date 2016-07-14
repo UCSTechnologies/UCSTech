@@ -4,26 +4,31 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Policy Holders</h2>
-                                
-<div align="right">
-    <table>
-        <tr>
-            @using (Html.BeginForm())
-            {                
-                <td>Find by Policy Number: </td>
-                <td>@Html.TextBox("SearchString")</td>
-                <td><input type="submit" value="Search" class="btn btn-primary"></td>
-            }
-        </tr>
-    </table>
+<div>
+    <input type="button" value="Print Holders' List" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("PrintAll", "NewMembers") + "'");" />
 </div>
+<br />
+<h2>Policy Holders</h2>                                          
+<div align="right">
 
-<p>
-    @Html.ActionLink("Add New Member", "Create")
-</p>
-<table class="table table-bordered table-responsive">
+    <p>
+        @using (Html.BeginForm("Index", "NewMembers", System.Web.Mvc.FormMethod.Get))
+        {
+            <b>Search By:</b>  @Html.RadioButton("SearchBy", "policyNo", true)<text>Policy No</text>
+            @Html.RadioButton("SearchBy", "IdNo")<text>Id Number</text>
+            @Html.RadioButton("SearchBy", "fullName")<text>Name or Surname</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+            if(Session["response10"] != null)
+            {
+                @Html.Label(Session["response10"].ToString())
+            }
+
+        }
+    </p>
+
+</div>
+<table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.policyNo)

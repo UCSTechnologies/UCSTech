@@ -6122,7 +6122,7 @@ function cloneFixAttributes( src, dest ) {
 	} else if ( nodeName === "input" || nodeName === "textarea" ) {
 		dest.defaultValue = src.defaultValue;
 
-	// IE blanks contents when cloning scripts
+	// IE Homes contents when cloning scripts
 	} else if ( nodeName === "script" && dest.text !== src.text ) {
 		dest.text = src.text;
 	}

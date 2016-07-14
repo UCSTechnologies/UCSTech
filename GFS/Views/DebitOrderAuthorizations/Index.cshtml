@@ -6,11 +6,35 @@
 }
 
 <h2>Authorizations</h2>
-
+<div align="right">
+    <table>
+        <tr>
+            @using (Html.BeginForm())
+            {
+                <td><label>Search by Policy Number:</label> </td>
+                <td>@Html.TextBox("search")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            }
+        </tr>
+    </table>
+</div>
 <table class="table table-bordered table-responsive">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Payers.paymentType)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.bankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.accNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.branchcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.accountType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.commenceDate)
@@ -29,6 +53,18 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Payers.paymentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branchcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accountType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.commenceDate)

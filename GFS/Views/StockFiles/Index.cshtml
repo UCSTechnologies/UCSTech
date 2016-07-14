@@ -4,25 +4,25 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2><u>Inventory</u></h2>
-<div align="right">
-    <table>
-        <tr>
-            @using (Html.BeginForm())
-            {
-                <td>Find by Stock Code: </td>
-                <td>@Html.TextBox("SearchString")</td>
-                <td><input type="submit" value="Search" class="btn btn-primary"></td>
-            }
-        </tr>
-    </table>
+<div>
+    <input type="button" value="Add To Stock" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Create", "StockFiles") + "'");" />
 </div>
+<h2>Inventory</h2>
+<div align="right">
 
-<p>
-    @Html.ActionLink("Add To Stock", "Create")
-</p>
-<table class="table table-bordered table-responsive">
+    <p>
+        @using (Html.BeginForm("Index", "StockFiles", System.Web.Mvc.FormMethod.Get))
+        {
+            <b>Search By:</b>  @Html.RadioButton("SearchBy", "stockCode", true)<text>Stock Code</text>
+            @Html.RadioButton("SearchBy", "category")<text>Category</text>
+            @Html.RadioButton("SearchBy", "status")<text>Status</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+        }
+    </p>
+
+</div>
+<table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.stockCode)

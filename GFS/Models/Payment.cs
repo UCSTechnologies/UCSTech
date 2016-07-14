@@ -29,18 +29,21 @@ namespace GFS.Models
         public string plan { get; set; }
 
         [DisplayName("Due Amount (R):")]
+        [DisplayFormat(DataFormatString ="{0:f2}", ApplyFormatInEditMode =true)]
         public double dueAmount { get; set; }
 
         [Required]
-        [DisplayName("Cash Rendered(R):")]
+        [DisplayName("Tendered Cash (R):")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double amount { get; set; }
 
         [DisplayName("Amount Outstanding (R):")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double outstandingAmount { get; set; }
 
         [Required]
         [DisplayName("Date:")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime datePayed { get; set; }
 
         [Required]

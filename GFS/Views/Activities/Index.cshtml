@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GFS.Models.Tracking.Activities>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.policyNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time)
+        </td>
+        
+    </tr>
+}
+
+</table>

@@ -124,31 +124,24 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.Label("Add Another Beneficiary?")
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.CheckBox("AddAnotherBen")
-                </div>
-            </div>
-        </div>*@
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Add Beneficiary" class="btn btn-success" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Forgot Something" class="btn btn-danger" onclick="history.go(-1);">|-|<input type="button" value="Skip" class="btn btn-warning" onclick="@("window.location.href='" + @Url.Action("Create", "Payers") + "'");" />
-            </div>
+        <div style="float:right">
+            <input type='button' class='btn button-next' name='next' value='Next' onclick="@("window.location.href='" + @Url.Action("Create", "Payers") + "'");" />
+        </div>
+        <div style="float:left">
+            <input type='button' class='btn button-previous' name='previous' value='Previous' onclick="history.go(-1);" />
         </div>
     </div>
+    if (TempData["responce9"] != null)
+    {
+        <script>alert("@TempData["responce9"].ToString()");</script>
+    }
+    @Html.ValidationSummary()
 }
-
-<div>
-    @Html.ActionLink("Add Another Beneficiary", "Create")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -4,8 +4,10 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Edit</h2>
+<div>
+    <input type="button" value="Declare as deceased" class="btn btn-danger" onclick="@("window.location.href='" + @Url.Action("Create", "Deceaseds") + "'");" />
+</div>
+<h2>Edit Dependant</h2>
 
 
 @using (Html.BeginForm())
@@ -13,7 +15,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Dependant</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.depNo)

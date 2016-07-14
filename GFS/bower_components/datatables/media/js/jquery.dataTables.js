@@ -2967,7 +2967,7 @@
 		// Check if any of the rows were invalidated
 		invalidated = _fnFilterData( settings );
 	
-		// If the input is blank - we just want the full data set
+		// If the input is Home - we just want the full data set
 		if ( input.length <= 0 ) {
 			settings.aiDisplay = displayMaster.slice();
 		}
@@ -11588,7 +11588,7 @@
 		 * case it will be treated as a pixel measurement). Setting as simply `true`
 		 * is recommended.
 		 *  @type boolean|string
-		 *  @default <i>blank string - i.e. disabled</i>
+		 *  @default <i>Home string - i.e. disabled</i>
 		 *
 		 *  @dtopt Features
 		 *  @name DataTable.defaults.scrollX
@@ -11612,7 +11612,7 @@
 		 * any CSS unit, or a number (in which case it will be treated as a pixel
 		 * measurement).
 		 *  @type string
-		 *  @default <i>blank string - i.e. disabled</i>
+		 *  @default <i>Home string - i.e. disabled</i>
 		 *
 		 *  @dtopt Options
 		 *  @name DataTable.defaults.scrollXInner
@@ -11636,7 +11636,7 @@
 		 * enabled at the same time). This property can be any CSS unit, or a number
 		 * (in which case it will be treated as a pixel measurement).
 		 *  @type string
-		 *  @default <i>blank string - i.e. disabled</i>
+		 *  @default <i>Home string - i.e. disabled</i>
 		 *
 		 *  @dtopt Features
 		 *  @name DataTable.defaults.scrollY

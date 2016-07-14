@@ -59,44 +59,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.bankName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.contactNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                @Html.EditorFor(model => model.bankName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.bankName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.contactNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.contactNo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.accNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.payerEmail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                @Html.EditorFor(model => model.accNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.accNo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.payerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.payerEmail, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.branchcode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.branchcode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.branchcode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.branchName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.branchName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.branchName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.accountType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.accountType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.accountType, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.policyNo, "policyNo", htmlAttributes: new { @class = "control-label col-md-2" })

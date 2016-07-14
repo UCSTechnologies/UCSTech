@@ -15,6 +15,9 @@
         <th>
             @Html.DisplayNameFor(model => model.bankN)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
         <th></th>
     </tr>
 
@@ -23,6 +26,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.bankN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.bankId }) |

@@ -2235,7 +2235,7 @@ function unifiedDiff(err, escape) {
     if (line.match(/\\ No newline/)) return null;
     else return indent + line;
   }
-  function notBlank(line) {
+  function notHome(line) {
     return line != null;
   }
   msg = diff.createPatch('string', err.actual, err.expected);
@@ -2244,7 +2244,7 @@ function unifiedDiff(err, escape) {
          + colorLines('diff added',   '+ expected') + ' '
          + colorLines('diff removed', '- actual')
          + '\n\n'
-         + lines.map(cleanUp).filter(notBlank).join('\n');
+         + lines.map(cleanUp).filter(notHome).join('\n');
 }
 
 /**

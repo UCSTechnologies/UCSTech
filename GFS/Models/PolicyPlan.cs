@@ -24,7 +24,7 @@ namespace GFS.Models
         public int policyID { get; set; }
 
         [Required]
-        [DisplayName("Policy Type")]
+        [DisplayName("Plan")]
         public string policyType { get; set; }
 
         [Required]
@@ -37,18 +37,22 @@ namespace GFS.Models
 
         [Required]
         [DisplayName("Premium")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double PlanPremium { get; set; }
 
         [Required]
         [DisplayName("Benefits Amount")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double benefit { get; set; }
 
         [Required]
         [DisplayName("Cash Amount")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double payout { get; set; }
 
         [Required]
         [DisplayName("Dependant Premium")]
+        [DisplayFormat(DataFormatString = "{0:f2}", ApplyFormatInEditMode = true)]
         public double dependantPrem { get; set; }
 
         [Required]

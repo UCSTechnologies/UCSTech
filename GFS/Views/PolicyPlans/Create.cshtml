@@ -38,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.policyType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-3">
-                @Html.EditorFor(model => model.policyType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.policyType, ViewBag.plnlst as List<SelectListItem>, "-Select-")
                 @Html.ValidationMessageFor(model => model.policyType, "", new { @class = "text-danger" })
             </div>
         </div>

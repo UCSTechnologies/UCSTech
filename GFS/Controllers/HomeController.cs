@@ -74,9 +74,9 @@ namespace GFS.Controllers
             return View("Grid");
         }
 
-        public ActionResult Blank()
+        public ActionResult Home()
         {
-            return View("Blank");
+            return View("Home");
         }
 
         public ActionResult Login()

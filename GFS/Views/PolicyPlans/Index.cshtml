@@ -4,13 +4,26 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Policy Plans</h2>
-
 <div>
-    <input type="button" value="Add New Plan" class="btn btn-success" onclick="@("window.location.href='" + @Url.Action("Create", "PolicyPlans") + "'");" />
+    <input type="button" value="Add New Plan" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Create", "PolicyPlans") + "'");" />
 </div>
 <br />
+<h2>Policy Plans</h2>
+<div align="right">
+
+    <p>
+        @using (Html.BeginForm("Index", "PolicyPlans", System.Web.Mvc.FormMethod.Get))
+        {
+            <b>Search By:</b>  @Html.RadioButton("SearchBy", "category", true)<text>category</text>
+            @Html.RadioButton("SearchBy", "policyType")<text>policyType</text><br />
+
+            @Html.TextBox("Search")<input type="submit" value="Search" class="btn btn-primary" />
+        }
+    </p>
+
+</div>
+
+
 <table class="table table-bordered table-responsive">
     <tr>
         <th>

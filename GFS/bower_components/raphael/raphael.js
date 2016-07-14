@@ -587,7 +587,7 @@
             "stroke-miterlimit": 0,
             "stroke-opacity": 1,
             "stroke-width": 1,
-            target: "_blank",
+            target: "_Home",
             "text-anchor": "middle",
             title: "Raphael",
             transform: "",
@@ -3798,7 +3798,7 @@
      | var c = paper.image("apple.png", 10, 10, 80, 80);
     \*/
     paperproto.image = function (src, x, y, w, h) {
-        var out = R._engine.image(this, src || "about:blank", x || 0, y || 0, w || 0, h || 0);
+        var out = R._engine.image(this, src || "about:Home", x || 0, y || 0, w || 0, h || 0);
         this.__set__ && this.__set__.push(out);
         return out;
     };
@@ -6160,7 +6160,7 @@
                             pn = hl;
                         }
                         if (att == "target") {
-                            pn.setAttributeNS(xlink, "show", value == "blank" ? "new" : value);
+                            pn.setAttributeNS(xlink, "show", value == "Home" ? "new" : value);
                         } else {
                             pn.setAttributeNS(xlink, att, value);
                         }

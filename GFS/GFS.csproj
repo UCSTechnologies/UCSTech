@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +53,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -62,6 +68,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -76,8 +86,24 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Moq, Version=4.1.1309.1617, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -149,6 +175,10 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -162,54 +192,73 @@
     <Compile Include="App_Start\AjaxHelperBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business Logic\GFSTracking.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccTypesController.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
+    <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavbarController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\Plan_TypeController.cs" />
     <Compile Include="Controllers\Policies\ArchivedMembersController.cs" />
     <Compile Include="Controllers\Policies\BeneficiariesController.cs" />
     <Compile Include="Controllers\Policies\DebitOrderAuthorizationsController.cs" />
+    <Compile Include="Controllers\Policies\DeceasedController.cs" />
     <Compile Include="Controllers\Policies\DeceasedsController.cs" />
     <Compile Include="Controllers\Policies\DependantsController.cs" />
     <Compile Include="Controllers\Policies\NewMembersController.cs" />
     <Compile Include="Controllers\Policies\PayersController.cs" />
     <Compile Include="Controllers\PolicyPlansController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RelationsController.cs" />
+    <Compile Include="Controllers\SalesPersonsController.cs" />
     <Compile Include="Controllers\StockCategoriesController.cs" />
     <Compile Include="Controllers\StockFilesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Domain\Data.cs" />
-    <Compile Include="Domain\Operation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605061242291_init.cs" />
-    <Compile Include="Migrations\201605061242291_init.Designer.cs">
-      <DependentUpon>201605061242291_init.cs</DependentUpon>
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Migrations\201606112319111_initial.cs" />
+    <Compile Include="Migrations\201606112319111_initial.Designer.cs">
+      <DependentUpon>201606112319111_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccType.cs" />
     <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\GFSProductRepository.cs" />
     <Compile Include="Models\GFSContext.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Plan_Type.cs" />
     <Compile Include="Models\Policies\ArchivedMember.cs" />
     <Compile Include="Models\Policies\Beneficiary.cs" />
     <Compile Include="Models\Policies\DebitOrderAuthorization.cs" />
     <Compile Include="Models\Policies\Deceased.cs" />
     <Compile Include="Models\Policies\Dependant.cs" />
+    <Compile Include="Models\Policies\FileDetail.cs" />
     <Compile Include="Models\Policies\NewMember.cs" />
     <Compile Include="Models\Policies\Payer.cs" />
     <Compile Include="Models\PolicyPlan.cs" />
+    <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\Relation.cs" />
     <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\SalesPerson.cs" />
     <Compile Include="Models\StockCategory.cs" />
     <Compile Include="Models\StockFile.cs" />
+    <Compile Include="Models\Tracking\Activities.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower_components\bootstrap-social\.gitignore" />
@@ -965,6 +1014,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <None Include="Properties\PublishProfiles\UCS-Technologies.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -988,7 +1039,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -999,20 +1052,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
-    <Content Include="Views\Home\FlotCharts.cshtml" />
-    <Content Include="Views\Home\MorrisCharts.cshtml" />
-    <Content Include="Views\Home\Tables.cshtml" />
-    <Content Include="Views\Home\Forms.cshtml" />
-    <Content Include="Views\Home\Panels.cshtml" />
-    <Content Include="Views\Home\Buttons.cshtml" />
-    <Content Include="Views\Home\Notifications.cshtml" />
-    <Content Include="Views\Home\Typography.cshtml" />
-    <Content Include="Views\Home\Icons.cshtml" />
-    <Content Include="Views\Home\Grid.cshtml" />
-    <Content Include="Views\Home\Blank.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -1093,9 +1133,33 @@
     <Content Include="Views\Payments\Edit.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Payments\Search.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Branches\Create.cshtml" />
+    <Content Include="Views\Branches\Delete.cshtml" />
+    <Content Include="Views\Branches\Details.cshtml" />
+    <Content Include="Views\Branches\Edit.cshtml" />
+    <Content Include="Views\Branches\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Plan_Type\Create.cshtml" />
+    <Content Include="Views\Plan_Type\Delete.cshtml" />
+    <Content Include="Views\Plan_Type\Details.cshtml" />
+    <Content Include="Views\Plan_Type\Edit.cshtml" />
+    <Content Include="Views\Plan_Type\Index.cshtml" />
+    <Content Include="Views\SalesPersons\Create.cshtml" />
+    <Content Include="Views\SalesPersons\Delete.cshtml" />
+    <Content Include="Views\SalesPersons\Details.cshtml" />
+    <Content Include="Views\SalesPersons\Edit.cshtml" />
+    <Content Include="Views\SalesPersons\Index.cshtml" />
+    <Content Include="Views\Deceased\DeclareDeceased.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Activities\Index.cshtml" />
+    <Content Include="Views\Product\List.cshtml" />
+    <Content Include="Views\Shared\ProductSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Upload\" />
+    <Folder Include="Images\" />
+    <Folder Include="Image\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
@@ -1103,9 +1167,15 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605061242291_init.resx">
-      <DependentUpon>201605061242291_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606112319111_initial.resx">
+      <DependentUpon>201606112319111_initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GFS.Domain\GFS.Domain.csproj">
+      <Project>{cfb14fef-c9a3-4bb9-bb6f-2578c172ca44}</Project>
+      <Name>GFS.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

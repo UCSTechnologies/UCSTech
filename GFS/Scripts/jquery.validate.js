@@ -207,8 +207,8 @@ $.extend( $.fn, {
 // Custom selectors
 $.extend( $.expr[ ":" ], {
 
-	// http://jqueryvalidation.org/blank-selector/
-	blank: function( a ) {
+	// http://jqueryvalidation.org/Home-selector/
+	Home: function( a ) {
 		return !$.trim( "" + $( a ).val() );
 	},
 
