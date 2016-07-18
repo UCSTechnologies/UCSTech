@@ -7,10 +7,8 @@ using GFS.Domain.Entities;
 
 namespace GFS.Domain.Abstract
 {
-    public interface IProductRepository
+    public interface IFuneralFormProcessor
     {
-        IEnumerable<Product> Products { get; }
-        void SaveProduct(Product product);
-        Product DeleteProduct(int productID);
+        void ProcessOrder(FuneralItem cart, Claims shippingDetails);
     }
 }

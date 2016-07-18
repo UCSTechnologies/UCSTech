@@ -2,15 +2,15 @@
 
     @{
         ViewBag.Title = "Products";
-        Layout = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_LayoutPR.cshtml";
     }
 
     @foreach (var p in Model.Products)
 {
-    @Html.Partial("ProductSummary", p)
+    @Html.Partial("_ProductSummary", p)
 }
 
 <div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
 </div>
 

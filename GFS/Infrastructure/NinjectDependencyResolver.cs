@@ -7,6 +7,8 @@ using Moq;
 using GFS.Domain.Abstract;
 using GFS.Domain.Entities;
 using GFS.Models;
+using System.Configuration;
+using GFS.Domain.Concrete;
 
 
 namespace GFS.Infrastructure
@@ -36,6 +38,13 @@ namespace GFS.Infrastructure
             // put bindings here
             
                  kernel.Bind<IProductRepository>().To<GFSProductRepository>();
+            EmailSettings emailSettings = new EmailSettings {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IFuneralFormProcessor>().To<EmailFuneralItemsProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
         }
     }
    

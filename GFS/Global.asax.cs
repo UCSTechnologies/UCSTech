@@ -7,6 +7,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Helpers;
 using System.Security.Claims;
+using GFS.Domain.Entities;
+using GFS.Infrastructure.Binders;
 
 namespace GFS
 {
@@ -20,6 +22,8 @@ namespace GFS
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+
+            ModelBinders.Binders.Add(typeof(FuneralItem), new FuneralItemModelBinder());
         }
     }
 }

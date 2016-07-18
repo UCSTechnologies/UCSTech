@@ -1,0 +1,63 @@
+﻿@using GFS.Models.Policies
+@model GFS.Domain.Entities.Claims
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutPR.cshtml";
+}
+<h2>Funeral Details</h2> 
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <h4>Deceased Details</h4>
+    <div class="form-group">
+        <label>Policy Number</label>
+        @Html.TextBoxFor(x => x.polNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>ID Number</label>
+        @Html.TextBoxFor(x => x.idNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">        
+    <label>Name(s)</label>        
+    @Html.TextBoxFor(x => x.Names, new { @class = "form-control" })   
+     </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        @Html.TextBoxFor(x => x.lastname, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Date and Time of Funeral</label>
+        <div>@Html.EditorFor(x => x.datetime, new { @class = "form-control" })</div>
+    </div>
+    <h4>Address of Funeral</h4>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName == "Line1" || property.PropertyName == "Line2" || property.PropertyName == "Line3" || property.PropertyName == "City")
+        {
+            <div class="form-group">                
+    <label>@(property.DisplayName ?? property.PropertyName) 
+                </label>                
+    @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })            
+    </div>
+        }
+    }
+
+    <div class="text-center">        
+    <input class="btn btn-primary" type="submit" value="Finish" />    
+    </div>
+    @*<div class="form-group">        
+    <label>Line 1:</label>        
+    @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })    
+    </div>    <div class="form-group">        
+    <label>Line 2:</label>        
+    @Html.TextBoxFor(x => x.Line2, new { @class = "form-control" })    
+    </div>    
+    <div class="form-group">        
+    <label>Line 3:</label>        
+    @Html.TextBoxFor(x => x.Line3, new { @class = "form-control" })    
+    </div>    <div class="form-group">        
+    <label>City:</label>        
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })    
+    </div>*@ 
+}

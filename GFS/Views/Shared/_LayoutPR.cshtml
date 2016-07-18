@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="∼/Content/bootstrap.css" rel="stylesheet" />
-    <link href="∼/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="∼/Content/ErrorStyles.css" rel="stylesheet" />
-    <script src="∼/Scripts/jquery-1.9.1.js"></script>
-    <script src="∼/Scripts/jquery.validate.js"></script>
-    <script src="∼/Scripts/jquery.validate.unobtrusive.js"></script>
     <title>G.F.S</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,6 +18,7 @@
 
     <link href="@Url.Content("~/bower_components/morrisjs/morris.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    
 
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
@@ -35,23 +31,30 @@
     <div id="wrapper">
         <!-- Navigation -->
         @Html.Action("Navbar", "Navbar")
-        
+        <div class="container-fluid">
         <div id="page-wrapper">
-            @if (TempData["message"] != null)
-            {            
-                <div class="alert alert-success">
-            @TempData["message"]
-            </div>        
-            }
-            @RenderBody()          
+            <div class="container-fluid">
+                <div class="jumbotron" align="center">
+                    <h2>
+                        Funeral Arrangement
+                    </h2>
+                    @Html.Action("Summary", "FuneralItem")
+                </div>
+            </div>
+            <div id="categories" class="col-xs-3">
+                @Html.Action("Menu", "PrNav")
+            </div>
+            <div class="col-xs-8">
+                @RenderBody()
+                </div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-         
     <!-- DataTables JavaScript -->
     <script src="@Url.Content("~/bower_components/raphael/raphael-min.js")"></script>
- 
+
     <!-- DataTables JavaScript -->
     <script src="@Url.Content("~/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js")"></script>
@@ -73,4 +76,5 @@
 <footer>
     <p>&copy; @DateTime.Now.Year - U.C.S Technologies (D.U.T Group)</p>
 </footer>
+
 

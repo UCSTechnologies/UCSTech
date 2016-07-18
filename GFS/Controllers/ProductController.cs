@@ -32,7 +32,9 @@ namespace GFS.Controllers
                  {
                      CurrentPage = page,
                      ItemsPerPage = PageSize,
-                     TotalItems = repository.Products.Count()
+                     TotalItems = category == null ? 
+                     repository.Products.Count() : 
+                     repository.Products.Where(e => e.category == category).Count()
                  },
                  CurrentCategory = category
              };
@@ -43,5 +45,19 @@ namespace GFS.Controllers
              //    .Skip((page - 1) * PageSize)
              //    .Take(PageSize));
          }
+
+        public FileContentResult GetImage(int productId)
+        {
+            Product prod = repository.Products
+                .FirstOrDefault(p => p.ProductID == productId);
+
+            if (prod != null)
+            {
+                return File(prod.ImageData, prod.ImageMimeType);
+            } else
+            {
+                return null;
+            }
+        }
     }
 }

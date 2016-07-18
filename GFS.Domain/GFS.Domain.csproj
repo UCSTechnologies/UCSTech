@@ -74,8 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IFuneralFormProcessor.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Concrete\EmailFuneralItemsProcessor.cs" />
+    <Compile Include="Entities\Claims.cs" />
+    <Compile Include="Entities\FuneralItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

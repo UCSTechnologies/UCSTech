@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
     <Compile Include="Controllers\BranchesController.cs" />
+    <Compile Include="Controllers\FuneralItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavbarController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
@@ -213,10 +214,12 @@
     <Compile Include="Controllers\Policies\NewMembersController.cs" />
     <Compile Include="Controllers\Policies\PayersController.cs" />
     <Compile Include="Controllers\PolicyPlansController.cs" />
+    <Compile Include="Controllers\PrNavController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RelationsController.cs" />
     <Compile Include="Controllers\SalesPersonsController.cs" />
     <Compile Include="Controllers\StockCategoriesController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StockFilesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Domain\Data.cs" />
@@ -224,6 +227,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\Binders\FuneralItemModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201606112319111_initial.cs" />
     <Compile Include="Migrations\201606112319111_initial.Designer.cs">
@@ -233,6 +237,7 @@
     <Compile Include="Models\AccType.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\FuneralItemIndexViewModel.cs" />
     <Compile Include="Models\GFSProductRepository.cs" />
     <Compile Include="Models\GFSContext.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -248,6 +253,7 @@
     <Compile Include="Models\Policies\FileDetail.cs" />
     <Compile Include="Models\Policies\NewMember.cs" />
     <Compile Include="Models\Policies\Payer.cs" />
+    <Compile Include="Models\Policies\Policy.cs" />
     <Compile Include="Models\PolicyPlan.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\Relation.cs" />
@@ -696,6 +702,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ErrorStyles.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
@@ -1154,7 +1161,15 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
-    <Content Include="Views\Shared\ProductSummary.cshtml" />
+    <Content Include="Views\Shared\_ProductSummary.cshtml" />
+    <Content Include="Views\Shared\_LayoutPR.cshtml" />
+    <Content Include="Views\PrNav\Menu.cshtml" />
+    <Content Include="Views\FuneralItem\Index.cshtml" />
+    <Content Include="Views\FuneralItem\Summary.cshtml" />
+    <Content Include="Views\FuneralItem\Checkout.cshtml" />
+    <Content Include="Views\FuneralItem\Completed.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stock\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
