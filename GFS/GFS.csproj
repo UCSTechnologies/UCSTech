@@ -194,10 +194,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AuditAttribute.cs" />
     <Compile Include="Business Logic\GFSTracking.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccTypesController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
     <Compile Include="Controllers\BanksController.cs" />
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\FuneralItemController.cs" />
@@ -213,6 +215,7 @@
     <Compile Include="Controllers\Policies\DependantsController.cs" />
     <Compile Include="Controllers\Policies\NewMembersController.cs" />
     <Compile Include="Controllers\Policies\PayersController.cs" />
+    <Compile Include="Controllers\PolicyController.cs" />
     <Compile Include="Controllers\PolicyPlansController.cs" />
     <Compile Include="Controllers\PrNavController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -235,6 +238,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccType.cs" />
+    <Compile Include="Models\Audit.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\FuneralItemIndexViewModel.cs" />
@@ -1158,7 +1162,6 @@
     <Content Include="Views\SalesPersons\Edit.cshtml" />
     <Content Include="Views\SalesPersons\Index.cshtml" />
     <Content Include="Views\Deceased\DeclareDeceased.cshtml" />
-    <Content Include="Views\View.cshtml" />
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Shared\_ProductSummary.cshtml" />
@@ -1170,6 +1173,8 @@
     <Content Include="Views\FuneralItem\Completed.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Stock\Edit.cshtml" />
+    <Content Include="Views\Policy\template.cshtml" />
+    <Content Include="Views\Audit\ViewAuditRecords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />

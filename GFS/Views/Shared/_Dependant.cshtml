@@ -1,7 +1,7 @@
 ﻿@model GFS.Models.Policies.Dependant
 
 <div>
-    <h4>Dependant</h4>
+    <h4>@Model.fName @Model.lName</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -84,9 +84,16 @@
             @Html.DisplayFor(model => model.policyNo)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.deceased)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deceased)
+        </dd>
     </dl>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.depNo }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+<p>
+    <input type="button" value="Edit" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit", "Dependants", new { id = Model.depNo }) + "'");" />
+    <input type="button" value="Declare as deceased" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("DeclareDeceased", "Deceased", new { id = Model.IdNo }) + "'");" />
+</p>

@@ -246,7 +246,44 @@ namespace GFS.Controllers
             }
             return View(payment);
         }
-        
+
+        public ActionResult forTemp(string searchStr)
+        {
+            var payment = from m in db.NewMembers
+                          select m;
+
+           
+            
+                payment = payment.Where(s => s.policyNo.Contains(searchStr));
+
+                var d = db.NewMembers.ToList().Find(r => r.policyNo == searchStr);
+                var du = db.Payers.ToList().Find(r => r.policyNo == searchStr);
+                var stand = db.Payments.ToList().FindLast(r => r.policyNo == searchStr);
+                if (d != null)
+                {
+                    Session["polNo"] = d.policyNo;
+                    Session["fullname"] = d.fName + " " + d.lName;
+                    Session["plan"] = d.Policyplan;
+                }
+                else if (d == null)
+                {
+                    Session["responce3"] = "Sorry, Member you searched for does not exist in the database! please add the Member first.";
+                    return View("Search");
+                }
+                if (stand != null)
+                {
+                    Session["iniPrem"] = (du.initialPremium + stand.outstandingAmount);
+                }
+                else if (stand == null)
+                {
+                    Session["iniPrem"] = (du.initialPremium);
+                }
+
+                return RedirectToAction("Create");
+            
+            
+        }
+
 
         // GET: Payments/Create
         public ActionResult Create()

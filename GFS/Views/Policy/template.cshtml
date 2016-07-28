@@ -1,0 +1,80 @@
+﻿@using GFS.Models.Policies
+@model GFS.Models.Policies.NewMember
+
+@{
+    ViewBag.Title = "Template";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{ 
+    if(TempData["Main"] == null)
+    {
+        <div class="jumbotron" align="center">
+            <h2>Policy not found</h2>
+        </div>
+    }
+
+    else if(TempData["Main"] != null)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading" align="center">
+                <h2>Policy @Model.policyNo</h2>
+            </div>
+            <div class="panel-body">
+                <div class="container" style="width: 400px; float: left; ">
+                    <h2 class="panel-heading" align="center">Holder</h2>
+                    <div class="well">
+                        @Html.Partial("_NewMember", Model)
+                    </div>
+                </div>
+                @if (TempData["Deps"] != null)
+                {
+                    <div class="panel-body">
+                        <div class="container" style="width: 400px; float: right; ">
+                        <h2 class="panel-heading">Dependants</h2>
+                        @foreach (var t in (List<Dependant>)TempData["Deps"])
+                            {
+                            <div class="well">
+                                @Html.Partial("_Dependant", t)
+                            </div>
+                            }
+                            </div>
+                    </div>
+                }
+                @if(TempData["Ppayers"] != null)
+                {
+                    <div class="panel-body">
+                        <div class="container" style="width:400px; align-content: center; ">
+                            <h2 class="panel-heading">Payer</h2>
+                            <div class="well">
+                                @Html.Partial("_Payer", (Payer)TempData["Ppayers"])
+                            </div>
+                        </div>
+                    </div>
+                }
+                 @if (TempData["Benss"] != null)
+                 {
+                    <div class="panel-body">
+                        <div class="container" style="width:500px; float: right; ">
+                            <h2 class="panel-heading">Beneficiaries</h2>
+                            @foreach (var t in (List<Beneficiary>)TempData["Benss"])
+                            {
+                                <div class="well">
+                                    @Html.Partial("_Beneficiary", t)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                 }
+            </div>
+            <div class="panel-footer">
+                <div align="center">
+                    <input type="button" value="Make Payment" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("forTemp", "Payments", new { searchStr = Model.policyNo }) + "'");" /><br />
+
+                </div>
+            </div>
+        </div>
+    }
+}
+

@@ -1,4 +1,5 @@
-﻿@model GFS.Models.LoginViewModel
+﻿@using GFS.Models
+@model GFS.Models.LoginViewModel
 
 @{
     ViewBag.Title = "Login";
@@ -49,9 +50,12 @@
     <br />
     <br />
     <p>
+        @if((User)Session["nullList"] != null)
+        { 
         <div>
             @Html.ActionLink("Register", "Create", "Users")
         </div>
+        }
     </p>
     <br />
     <br />

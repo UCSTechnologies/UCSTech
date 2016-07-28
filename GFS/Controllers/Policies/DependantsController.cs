@@ -82,7 +82,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
+        public ActionResult Create([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo,deceased")] Dependant dependant)
         {
             Dependant idno = db.Dependants.ToList().Find(x => x.IdNo == dependant.IdNo);
             if (idno != null)
@@ -218,6 +218,7 @@ namespace GFS.Controllers.Policies
                 {
                     dependant.amount = 0;
                 }
+            dependant.deceased = false;
                 db.Dependants.Add(dependant);
                 db.SaveChanges();
                 var deps = db.Dependants.ToList().Where(p => p.policyNo == dependant.policyNo);
@@ -267,7 +268,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo")] Dependant dependant)
+        public ActionResult Edit([Bind(Include = "depNo,coveredby,fName,lName,IdNo,dOb,age,relationship,amount,policyPlan,asBeneficiary,addAnotherDep,policyNo,deceased")] Dependant dependant)
         {
             if (ModelState.IsValid)
             {

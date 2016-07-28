@@ -1,7 +1,7 @@
 ﻿@model GFS.Models.Policies.NewMember
 
 <div>
-    <h4>Details Of The Holder</h4>
+    <h4>@Model.title @Model.lName</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -148,9 +148,17 @@
             @Html.DisplayFor(model => model.Category)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.deceased)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deceased)
+        </dd>
+
     </dl>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.policyNo }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+<p>
+    <input type="button" value="Edit" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit", "NewMembers", new { id = Model.policyNo }) + "'");" />
+    <input type="button" value="Declare as deceased" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("DeclareDeceased", "Deceased", new { id = Model.IdNo, search="principal"  }) + "'");" />
+</p>

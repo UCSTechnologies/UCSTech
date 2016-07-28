@@ -18,7 +18,8 @@ namespace GFS.Controllers
         // GET: Activities
         public ActionResult Index()
         {
-            return View(db.Activities.ToList());
+            var acts = db.Activities.ToList().Where(p => p.time.Day == DateTime.Now.Day);
+            return View(/*db.Activities.ToList()*/ acts);
         }
         
     }

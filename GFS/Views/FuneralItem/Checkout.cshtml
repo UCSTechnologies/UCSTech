@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
         <label>Date and Time of Funeral</label>
-        <div>@Html.EditorFor(x => x.datetime, new { @class = "form-control" })</div>
+        <div>@Html.TextBoxFor(x => x.datetime, new { type = "datetime-local" })</div>
     </div>
     <h4>Address of Funeral</h4>
     foreach (var property in ViewData.ModelMetadata.Properties)
@@ -38,7 +38,7 @@
             <div class="form-group">                
     <label>@(property.DisplayName ?? property.PropertyName) 
                 </label>                
-    @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })            
+    @Html.TextBox(property.PropertyName, "lin", new { @class = "form-control" })            
     </div>
         }
     }

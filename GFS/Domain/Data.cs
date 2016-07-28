@@ -40,7 +40,7 @@ namespace GFS.Domain
             menu.Add(new Navbar { Id = 18, nameOption = "Beneficiaries", controller = "Beneficiaries", action = "Index", estatus = true, isParent = false, parentId = 2 });
             menu.Add(new Navbar { Id = 5, nameOption = "Payers", controller = "Payers", action = "Index", estatus = true, isParent = false, parentId = 2 });
             menu.Add(new Navbar { Id = 19, nameOption = "Authorizations", controller = "DebitOrderAuthorizations", action = "Index", estatus = true, isParent = false, parentId = 2 });
-            menu.Add(new Navbar { Id = 6, nameOption = "Stock File", controller = "StockFiles", action = "Index", imageClass = "fa fa-edit fa-fw", estatus = true, isParent = false, parentId = 0 });
+            menu.Add(new Navbar { Id = 6, nameOption = "Stock", controller = "Stock", action = "Index", imageClass = "fa fa-edit fa-fw", estatus = true, isParent = false, parentId = 0 });
             menu.Add(new Navbar { Id = 7, nameOption = "Data Management", imageClass = "fa fa-wrench fa-fw", estatus = true, isParent = true, parentId = 0 });
             menu.Add(new Navbar { Id = 22, nameOption = "Add Branch", controller = "Branches", action = "Create", estatus = true, isParent = false, parentId = 7 });
             menu.Add(new Navbar { Id = 23, nameOption = "Add Plan", controller = "Plan_Type", action = "Create", estatus = true, isParent = false, parentId = 7 });
@@ -139,7 +139,7 @@ namespace GFS.Domain
             navbar = (from nav in items
                       join rol in rolesNav on nav.Id equals rol.idMenu
                       join user in usersNav on rol.idUser equals user.Id
-                      where user.firstname + " " + user.lastname == userName
+                      where user.userid == userName
                       select new Navbar
                       {
                           Id = nav.Id,

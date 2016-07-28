@@ -213,7 +213,7 @@
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-css" }))
                 {
                     @Html.AntiForgeryToken()
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @User.Identity.Name <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @*@User.Identity.Name*@ @TempData["Usernameee"] <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -246,15 +246,21 @@
     <div class="navbar-default sidebar" role="navigation" style="margin-bottom:50px ; background-color:rgba(248, 248, 248, 0.02)">
         <div class="sidebar-nav navbar-collapse" style="margin-top: 50px; background-color:rgba(248, 248, 248, 0.02)">
             <ul class="nav" id="side-menu">
-                @*<li class="sidebar-search">
+                @*<li class="sidebar-search">*@
+                    @if (Request.IsAuthenticated)
+                    { 
+                    using (Html.BeginForm("template", "Policy", System.Web.Mvc.FormMethod.Get))
+                            {
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" name="pol" class="form-control" placeholder="Enter Policy Number....">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button class="btn btn-default" type="submit" >
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
-                    </div>*@
+                    </div>
+                            }
+                    }
                 <!-- /input-group -->
                 @*</li>*@
                 @foreach (var item in Model)

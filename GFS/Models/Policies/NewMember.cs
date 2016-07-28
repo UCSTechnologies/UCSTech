@@ -37,7 +37,7 @@ namespace GFS.Models.Policies
 
         [Required]
         [DisplayName("Date of Birth:")]
-        [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime dOb { get; set; }
 
         [Required]
@@ -125,5 +125,8 @@ namespace GFS.Models.Policies
         [NotMapped]
         [DisplayName("Member Paying?:")]
         public bool paying { get; set; }
+
+        [DisplayName("Deceased Status")]
+        public bool deceased { get; set; }
     }
 }

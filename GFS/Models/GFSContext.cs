@@ -61,5 +61,6 @@ namespace GFS.Models
         public System.Data.Entity.DbSet<GFS.Models.Tracking.Activities> Activities { get; set; }
 
         public System.Data.Entity.DbSet<GFS.Domain.Entities.Product> Products { get; set; }
+        public System.Data.Entity.DbSet<GFS.Models.Audit> Audits { get; set; }
     }
 }

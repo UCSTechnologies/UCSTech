@@ -28,6 +28,9 @@
 <table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.policyNo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.coveredby)
         </th>
         <th>
@@ -54,15 +57,15 @@
         <th>
             @Html.DisplayNameFor(model => model.policyPlan)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.policyNo)
-        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.ActionLink(item.policyNo, "template", "Policy", new { pol = item.policyNo }, null)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.coveredby)
             </td>
@@ -89,9 +92,6 @@
             </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.policyPlan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.policyNo)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.depNo }) |

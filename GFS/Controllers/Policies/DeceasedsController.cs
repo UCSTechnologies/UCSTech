@@ -36,56 +36,66 @@ namespace GFS.Controllers.Policies
         [ValidateAntiForgeryToken]
         public ActionResult Create(Deceased deceased)
         {
-            //if (ModelState.IsValid)
-            //{
+            deceased.firstName = Session["First Name"].ToString();
+            deceased.lastName = Session["Last Name"].ToString();
+            deceased.idNo = Session["ID Number"].ToString();
+            deceased.age = Convert.ToInt32(Session["Age"].ToString());
+            deceased.policyNo = Session["PolicyNo"].ToString();
             Deceased dec = db.Deceaseds.ToList().Find(x => x.idNo == Session["ID Number"].ToString());
             if (dec != null)
             {
-                TempData["Response13"] = "**This person has already been declared as deceased**";
-                Session["DeceasedNo"] = deceased.deceasedNo;
-                return RedirectToAction("Create");
+                //TempData["Response13"] = "**This person has already been declared as deceased**";
+                ModelState.AddModelError("", "This person has already been declared as deceased");
             }
-            if(deceased.DateOfDeath>DateTime.Now)
+            if (deceased.DateOfDeath > DateTime.Now)
             {
-                TempData["Response13"] = "**Date of death cannot be future date**";
-                return RedirectToAction("Create");
+                //TempData["Response13"] = "**Date of death cannot be future date**";
+                ModelState.AddModelError("", "Date of death cannot be future date");
             }
-            else
-            {
-                deceased.firstName = Session["First Name"].ToString();
-                deceased.lastName = Session["Last Name"].ToString();
-                deceased.idNo = Session["ID Number"].ToString();
-                deceased.age = Convert.ToInt32(Session["Age"].ToString());
-                deceased.policyNo = Session["PolicyNo"].ToString();
-                List<FileDetail> fileDetails = new List<FileDetail>();
-                for (int i = 0; i < Request.Files.Count; i++)
+
+            else //if (ModelState.IsValid)
+            
                 {
-                    var file = Request.Files[i];
-
-                    if (file != null && file.ContentLength > 0)
+                    
+                    List<FileDetail> fileDetails = new List<FileDetail>();
+                    for (int i = 0; i < Request.Files.Count; i++)
                     {
-                        var fileName = Path.GetFileName(file.FileName);
-                        FileDetail fileDetail = new FileDetail()
+                        var file = Request.Files[i];
+
+                        if (file != null && file.ContentLength > 0)
                         {
-                            FileName = fileName,
-                            Extension = Path.GetExtension(fileName),
-                            Id = Guid.NewGuid()
-                        };
-                        fileDetails.Add(fileDetail);
+                            var fileName = Path.GetFileName(file.FileName);
+                            FileDetail fileDetail = new FileDetail()
+                            {
+                                FileName = fileName,
+                                Extension = Path.GetExtension(fileName),
+                                Id = Guid.NewGuid()
+                            };
+                            fileDetails.Add(fileDetail);
 
-                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
-                        file.SaveAs(path);
+                            var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
+                            file.SaveAs(path);
+                        }
                     }
-                }
 
-                deceased.FileDetails = fileDetails;
-                db.Deceaseds.Add(deceased);
-                db.SaveChanges();
-                Dependant d = db.Dependants.ToList().Find(r => r.IdNo == deceased.idNo);
-                db.Dependants.Remove(d);
-                NewMember n = db.NewMembers.ToList().Find(r => r.IdNo == deceased.idNo);
-                return RedirectToAction("Index");
-            }
+
+                    deceased.FileDetails = fileDetails;
+                    db.Deceaseds.Add(deceased);
+                    db.SaveChanges();
+                    Dependant d = db.Dependants.ToList().Find(r => r.IdNo == deceased.idNo);
+                    if(d!=null)
+                {
+                    d.deceased = true;
+                    db.SaveChanges();
+                }
+                    NewMember n = db.NewMembers.ToList().Find(r => r.IdNo == deceased.idNo);
+                {
+                    n.deceased = true;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("List", "Product");
+                }
+            return View();
 
         }
 

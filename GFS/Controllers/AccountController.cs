@@ -26,6 +26,8 @@ namespace GFS.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            TempData["nullList"] = (from e in db.Users.ToList()
+                                    select e).ToList();
             ViewBag.ReturnUrl = returnUrl;
             return View(new LoginViewModel());
         }
@@ -47,7 +49,7 @@ namespace GFS.Controllers
             if (users.Any(p => p.CustEmail == model.UserName && p.password == model.Password))
             {
                 User t = db.Users.ToList().Find(p => p.CustEmail == model.UserName && p.password == model.Password);
-                var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, t.firstname + " " + t.lastname), }, DefaultAuthenticationTypes.ApplicationCookie);
+                var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, t.userid), }, DefaultAuthenticationTypes.ApplicationCookie);
 
                 Authentication.SignIn(new AuthenticationProperties
                 {
@@ -55,7 +57,6 @@ namespace GFS.Controllers
                 }, identity);
                 
                 d.login(t.userid);
-                Session["UserID"] = t.userid;
                 return RedirectToAction("Home", "Home");
             }
             else
@@ -71,7 +72,7 @@ namespace GFS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            d.logout(Session["UserID"].ToString());
+            d.logout(User.Identity.Name);
             Authentication.SignOut();
             return RedirectToAction("Login", "Account");
         }

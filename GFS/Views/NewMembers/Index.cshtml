@@ -81,6 +81,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Policyplan)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deceased)
+        </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.Premium)
             </th>
@@ -97,7 +100,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.policyNo)
+                @Html.ActionLink(item.policyNo, "template", "Policy", new { pol=item.policyNo }, null)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.title)

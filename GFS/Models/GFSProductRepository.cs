@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using GFS.Domain.Abstract;
 using GFS.Domain.Entities;
 
@@ -16,6 +17,7 @@ namespace GFS.Models
         public void SaveProduct(Product product)
         {
             if (product.ProductID == 0) {
+                product.dateadded = DateTime.Now;
                 context.Products.Add(product);
             }
 

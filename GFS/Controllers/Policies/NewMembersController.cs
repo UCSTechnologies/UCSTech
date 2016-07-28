@@ -28,6 +28,7 @@ namespace GFS.Controllers.Policies
         private GFSContext db = new GFSContext();
 
         // GET: NewMembers
+        [Audit]
         public ActionResult Index(string searchBy, string search)
         {
             var member = from m in db.NewMembers.ToList()
@@ -135,7 +136,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "policyNo,title,fName,lName,IdNo,dOb,age,gender,maritalStat,telNo,cellNo,CustEmail,fascimileNo,physicalAddress,postalAddress,dateAdded,Policyplan,Premium,Category,Branch,SalesPerson,capturedby,addDep,paying")] NewMember newMember)
+        public ActionResult Create([Bind(Include = "policyNo,title,fName,lName,IdNo,dOb,age,gender,maritalStat,telNo,cellNo,CustEmail,fascimileNo,physicalAddress,postalAddress,dateAdded,Policyplan,Premium,Category,Branch,SalesPerson,capturedby,addDep,paying,deceased")] NewMember newMember)
         {
             
             NewMember polNo = db.NewMembers.ToList().Find(x => x.policyNo == newMember.policyNo);
@@ -159,7 +160,7 @@ namespace GFS.Controllers.Policies
                     int month = Convert.ToInt16(newMember.IdNo.Substring(2, 2));
                     int day = Convert.ToInt16(newMember.IdNo.Substring(4, 2));
 
-                    var d= day + "/" + month + "/" + year;
+                    var d= year + "-" + month + "-" + day;
                     DateTime d1 = DateTime.Parse(d);
                     newMember.dOb = d1;
                 }
@@ -518,6 +519,7 @@ namespace GFS.Controllers.Policies
                 newMember.policyNo = "GFS" + newMember.policyNo;              
                 newMember.dateAdded = DateTime.Now;
                 newMember.capturedby = User.Identity.Name;
+                newMember.deceased = false;
                 db.NewMembers.Add(newMember);
                 db.SaveChanges();
                 Session["owner"] = newMember.fName + " " + newMember.lName;
@@ -1058,7 +1060,7 @@ namespace GFS.Controllers.Policies
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "policyNo,title,fName,lName,IdNo,dOb,age,gender,maritalStat,telNo,cellNo,CustEmail,fascimileNo,physicalAddress,postalAddress,dateAdded,Policyplan,Premium,Category,Branch,SalesPerson,capturedby,addDep,paying")] NewMember newMember)
+        public ActionResult Edit([Bind(Include = "policyNo,title,fName,lName,IdNo,dOb,age,gender,maritalStat,telNo,cellNo,CustEmail,fascimileNo,physicalAddress,postalAddress,dateAdded,Policyplan,Premium,Category,Branch,SalesPerson,capturedby,addDep,paying,deceased")] NewMember newMember)
         {
             if (ModelState.IsValid)
             {

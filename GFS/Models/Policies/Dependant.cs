@@ -66,5 +66,8 @@ namespace GFS.Models.Policies
         [DisplayName("Policy No:")]
         public string policyNo { get; set; }
         public virtual ICollection<NewMember> NewMembers { get; set; }
+
+        [DisplayName("Deceased Status")]
+        public bool deceased { get; set; }
     }
 }

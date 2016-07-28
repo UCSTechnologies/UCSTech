@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GFS.Models.Audit>
+
+@{
+    ViewBag.Title = "ViewAuditRecords";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pages Accesed</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IPAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaAccessed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAccessed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IPAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaAccessed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAccessed)
+        </td>
+    </tr>
+}
+
+</table>

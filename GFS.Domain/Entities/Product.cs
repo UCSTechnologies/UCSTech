@@ -44,6 +44,9 @@ namespace GFS.Domain.Entities
         [Display(Name = "Supplier")]
         public string supplier { get; set; }
 
+        [Display(Name = "Date Added")]
+        public DateTime dateadded { get; set; }
+
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
     }

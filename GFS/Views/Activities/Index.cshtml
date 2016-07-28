@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Activities</h2>
 
 <p>
     
@@ -48,7 +48,14 @@
             @Html.DisplayFor(modelItem => item.lastname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.activity)
+            @if(item.activity == "Logged in")
+            {
+                @Html.ActionLink(item.activity, "ViewAuditRecords", "Audit", item, null)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.activity)
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.policyNo)

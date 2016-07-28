@@ -1,7 +1,7 @@
 ﻿@model GFS.Models.Policies.Payer
 
 <div>
-    <h4>Payer</h4>
+    <h4>@Model.firstName @Model.lastName</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -63,3 +63,6 @@
 
     </dl>
 </div>
+<p>
+    <input type="button" value="Edit" class="btn btn-default" onclick="@("window.location.href='" + @Url.Action("Edit", "Payers", new { id = Model.payerNo }) + "'");" />
+</p>

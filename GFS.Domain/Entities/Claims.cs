@@ -9,6 +9,9 @@ namespace GFS.Domain.Entities
 {
     public class Claims
     {
+        [Required]
+        public int claimno { get; set; }
+
         [Required(ErrorMessage = "Please enter policy number")]
         public string polNo { get; set; }
 
@@ -24,7 +27,7 @@ namespace GFS.Domain.Entities
         public string lastname { get; set; }
 
         [Required(ErrorMessage = "Please pick a date and time")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Time)]
         public DateTime datetime { get; set; }
 
         [Required(ErrorMessage = "Please enter the first address line")]
